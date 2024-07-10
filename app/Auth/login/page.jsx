@@ -1,14 +1,24 @@
+'use client';
 import React from 'react'
+import axios from 'axios'
+
 
 const LoginForm = ({ toggleForm }) => {
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
+    axios.get("http://localhost:5000/users")
+    .then(result => {
+      console.log("test")
+    }).catch(err => () =>{
+      console.log(err)
+    })
   }
 
   return (
     <form
       onSubmit={handleSubmit}
       className='flex flex-col justify-center w-full p-10'
+      action=''
     >
       <h3 className='text-red-500 tracking-tighter'>LOGIN</h3>
       <label className='text-lg font-semibold'>Username</label>
